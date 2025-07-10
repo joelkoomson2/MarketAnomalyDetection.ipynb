@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>AI Strategy Bot</title>
+</head>
+<body>
+  <h1>📈 AI Investment Strategy Bot</h1>
+
+  <form method="POST">
+    {% csrf_token %}
+    <label>Ask your question:</label><br>
+    <input type="text" name="question" size="60"><br><br>
+
+    <label>Enter VIX value:</label><br>
+    <input type="text" name="vix" value="{{ vix }}"><br><br>
+
+    <label>Enter DXY value:</label><br>
+    <input type="text" name="dxy" value="{{ dxy }}"><br><br>
+
+    <input type="submit" value="Ask & Predict">
+  </form>
+
+  {% if model_prob %}
+    <h3>🔍 Model Prediction:</h3>
+    <p>{{ model_prob }}</p>
+  {% endif %}
+
+  {% if response %}
+    <h3>🤖 AI Explanation:</h3>
+    <p>{{ response }}</p>
+  {% endif %}
+</body>
+</html> 
